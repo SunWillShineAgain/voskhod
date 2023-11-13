@@ -1,0 +1,587 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: Halvar;
+    src: url(./fonts/HalvarBreit-Bd.woff2) format("woff2"), url(/fonts/HalvarBreit-Bd.woff) format("woff");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --p-32: 32px;
+    --white: white;
+    --black: black;
+    --green: #214532;
+    --brown: #604b3c;
+    --beige: #ceb78b;
+    --dark-gray: #293743;
+    --light-gray: #b3b3b3;
+}
+
+a:active,
+a:visited {
+    color: initial;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Halvar, serif;
+    overflow: auto;
+}
+
+body.active {
+    overflow: hidden;
+}
+
+body.active .container {
+    padding-right: 17px;
+}
+
+header {
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 64px);
+    margin: 0 var(--p-32) var(--p-32);
+    z-index: 4;
+    transition: background-color .2s ease-in-out;
+    -webkit-transition: background-color .2s ease-in-out;
+    -moz-transition: background-color .2s ease-in-out;
+    -ms-transition: background-color .2s ease-in-out;
+    -o-transition: background-color .2s ease-in-out;
+}
+
+body.active header {
+    clip-path: inset(-500% 17px 0 0);
+}
+
+section {
+    height: 100vh;
+}
+
+section.slider img {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+}
+
+.section-slider {
+    position: relative;
+}
+
+.main-section {
+    position: absolute;
+    bottom: 130px;
+    display: flex;
+    gap: 30px;
+    margin: 0 var(--p-32);
+    border: 2px solid var(--white);
+    padding: 60px 40px;
+    color: var(--white);
+    z-index: 2;
+    user-select: none;
+}
+
+body.active .main-section {
+    margin-right: 49px;
+}
+
+.main-section-title {
+    flex-basis: 60%;
+}
+
+.main-section-title h2 {
+    font-size: 4.44vw;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.main-section-descr {
+    font-size: 36px;
+    margin-top: 28px;
+}
+
+.header-wrap {
+    display: flex;
+    height: 100px;
+    align-items: stretch;
+}
+
+body.active .header-wrap {
+    background-color: var(--light-gray);
+    margin-right: 17px;
+}
+
+.swiper-wrapper {
+    pointer-events: all;
+    user-select: auto;
+}
+
+body.active .swiper-wrapper {
+    pointer-events: none;
+    user-select: none;
+}
+
+.header-hamburger {
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.header-hamburger path {
+    stroke: var(--white)
+}
+
+.header-hamburger svg g {
+    display: block !important;
+}
+
+.header-wrap .header-hamburger.active path {
+    stroke: var(--dark-gray)
+}
+
+.header-hamburger.active {
+    border-color: var(--dark-gray);
+}
+
+.header-body {
+    border: 2px solid var(--white);
+    border-right: none;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 0 60px 0 30px;
+}
+
+body.active header .header-body {
+    border-color: var(--dark-gray);
+}
+
+.header-phones {
+    text-align: right;
+    margin-left: auto;
+    user-select: none;
+}
+
+body.active .header-wrap .header-phones a {
+    color: var(--dark-gray);
+}
+
+.header-phones a {
+    color: var(--white);
+}
+
+.header-phones a:hover {
+    opacity: 0.8;
+}
+
+.header-phones p:first-child {
+    margin-bottom: 5px;
+}
+
+.header-phones p:last-child {
+    display: none;
+}
+
+.header-phones:hover p:last-child {
+    display: block;
+}
+
+#logo {
+    height: 24px;
+    fill: var(--white);
+}
+
+body.active .header-name #logo {
+    fill: var(--dark-gray)
+}
+
+.header-request {
+    font-family: Halvar, serif;
+    margin-left: auto;
+    border: 2px solid var(--white);
+    padding: 0 50px;
+    outline: none;
+    background-color: transparent;
+    height: 100%;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--white);
+    user-select: none;
+    -webkit-transition: color .1s ease-in-out, background-color .1s ease-in-out;
+    -moz-transition: color .1s ease-in-out, background-color .1s ease-in-out;
+    -ms-transition: color .1s ease-in-out, background-color .1s ease-in-out;
+    -o-transition: color .1s ease-in-out, background-color .1s ease-in-out;
+    transition: color .1s ease-in-out, background-color .1s ease-in-out;
+}
+
+.header-request:hover {
+    background-color: var(--white);
+    color: var(--black)
+}
+
+body.active header .header-request {
+    border-color: var(--dark-gray);
+    color: var(--dark-gray);
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide-active {
+    cursor: grab;
+}
+
+.controls {
+    position: absolute;
+    z-index: 1;
+    top: 40px;
+    right: 40px;
+    display: flex;
+    gap: 30px;
+    outline: none;
+}
+
+.beige {
+    stroke: #ceb78b;
+}
+
+.controls svg {
+    cursor: pointer;
+    width: 51px;
+    height: 30px;
+    fill: none;
+}
+
+.button-prev path,
+.button-next path {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transition: scale .3s ease-in-out .1s, transform .3s ease-in-out;
+    -webkit-transition: scale .3s ease-in-out .1s, transform .3s ease-in-out;
+    -moz-transition: scale .3s ease-in-out .1s, transform .3s ease-in-out;
+    -ms-transition: scale .3s ease-in-out .1s, transform .3s ease-in-out;
+    -o-transition: scale .3s ease-in-out .1s, transform .3s ease-in-out;
+    transform-origin: 0 50%;
+}
+
+.button-prev path:first-child,
+.button-next path:first-child {
+    transform: scale(1) translateX(0);
+    -webkit-transform: scale(1) translateX(0);
+    -moz-transform: scale(1) translateX(0);
+    -ms-transform: scale(1) translateX(0);
+    -o-transform: scale(1) translateX(0);
+    transform-origin: 0 50%;
+}
+
+.button-prev:hover path:nth-child(2) {
+    transform: scale(1) translateX(10px);
+    -webkit-transform: scale(1) translateX(10px);
+    -moz-transform: scale(1) translateX(10px);
+    -ms-transform: scale(1) translateX(10px);
+    -o-transform: scale(1) translateX(10px);
+    transform-origin: 0 50%;
+    transition-delay: 0.05s;
+}
+
+.button-prev:hover path:nth-child(3) {
+    transform: scale(1) translateX(20px);
+    -webkit-transform: scale(1) translateX(20px);
+    -moz-transform: scale(1) translateX(20px);
+    -ms-transform: scale(1) translateX(20px);
+    -o-transform: scale(1) translateX(20px);
+    transform-origin: 0 50%;
+    transition-delay: 0.1s;
+}
+
+.button-next:hover path:nth-child(2) {
+    transform: scale(1) translateX(-10px);
+    -webkit-transform: scale(1) translateX(-10px);
+    -moz-transform: scale(1) translateX(-10px);
+    -ms-transform: scale(1) translateX(-10px);
+    -o-transform: scale(1) translateX(-10px);
+    transform-origin: 0 50%;
+    transition-delay: 0.05s;
+}
+
+.button-next:hover path:nth-child(3) {
+    transform: scale(1) translateX(-20px);
+    -webkit-transform: scale(1) translateX(-20px);
+    -moz-transform: scale(1) translateX(-20px);
+    -ms-transform: scale(1) translateX(-20px);
+    -o-transform: scale(1) translateX(-20px);
+    transform-origin: 0 50%;
+    transition-delay: 0.1s;
+}
+
+.shade {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(16, 23, 29, .7), rgba(16, 23, 29, .373159) 31.62%, rgba(16, 23, 29, 0) 74.88%), linear-gradient(0deg, rgba(16, 23, 29, .6), rgba(16, 23, 29, .2) 140px, rgba(16, 23, 29, 0));
+}
+
+.project-summary {
+    position: absolute;
+    z-index: 2;
+    color: var(--white);
+    padding: 40px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+}
+
+.swiper-slide {
+    position: relative;
+}
+
+.project-link {
+    color: var(--beige);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.project-link:visited {
+    color: var(--beige);
+}
+
+.project-link svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: var(--beige);
+    -webkit-transition: transform .3s ease-in-out;
+    -moz-transition: transform .3s ease-in-out;
+    -ms-transition: transform .3s ease-in-out;
+    -o-transition: transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+}
+
+.project-link:hover svg {
+    transform: translate(3px, -3px);
+    -webkit-transform: translate(3px, -3px);
+    -moz-transform: translate(3px, -3px);
+    -ms-transform: translate(3px, -3px);
+    -o-transform: translate(3px, -3px);
+}
+
+.project-name {
+    font-family: Montserrat, sans-serif;
+    font-size: 24px;
+    flex-basis: 55%;
+}
+
+.project-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.main-menu {
+    position: absolute;
+    border: 2px solid white;
+    bottom: -100vh;
+    left: 0;
+    right: 0;
+    background-color: var(--light-gray);
+    z-index: 3;
+}
+
+.main-menu-wrap {
+    display: none;
+}
+
+.header-hamburger.active .main-menu-wrap {
+    display: block;
+}
+
+.header-hamburger.active .main-menu {
+    border: none;
+    bottom: 98px;
+    margin-right: 17px;
+}
+
+.main-menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 1px;
+
+}
+
+.main-menu ul li {
+    border: 2px solid var(--dark-gray);
+    flex-grow: 1;
+    text-align: center;
+    margin: -1px;
+}
+
+.main-menu ul a {
+    display: inline-block;
+    font-size: 4.44vw;
+    padding: 46px 36px;
+    width: 100%;
+    user-select: none;
+    transition: color .1s ease-in-out, background-color .1s ease-in-out;
+    -webkit-transition: color .1s ease-in-out, background-color .1s ease-in-out;
+    -moz-transition: color .1s ease-in-out, background-color .1s ease-in-out;
+    -ms-transition: color .1s ease-in-out, background-color .1s ease-in-out;
+    -o-transition: color .1s ease-in-out, background-color .1s ease-in-out;
+}
+
+.header-hamburger.active .main-menu ul a {
+    color: var(--dark-gray)
+}
+
+.header-hamburger.active [data-color="gray"]:hover,
+body.active [data-color="gray"]:hover {
+    color: var(--light-gray)
+}
+
+body.active .header-wrap [data-color="gray"]:hover {
+    color: var(--light-gray);
+    border-color: var(--dark-gray);
+}
+
+.header-hamburger.active [data-color="white"]:hover {
+    color: var(--white)
+}
+
+.header-hamburger.active [data-color="black"]:hover {
+    color: var(--black)
+}
+
+.header-hamburger.active [data-bg-color="black"]:hover {
+    background-color: var(--black)
+}
+
+.header-hamburger.active [data-bg-color="beige"]:hover {
+    background-color: var(--beige)
+}
+
+.header-hamburger.active [data-bg-color="white"]:hover {
+    background-color: var(--white)
+}
+
+.header-hamburger.active [data-bg-color="dark"]:hover,
+body.active header [data-bg-color="dark"]:hover {
+    background-color: var(--dark-gray)
+}
+
+.header-hamburger.active [data-bg-color="green"]:hover {
+    background-color: var(--green)
+}
+
+.header-hamburger.active [data-bg-color="brown"]:hover {
+    background-color: var(--brown)
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+    background-color: transparent;
+    transition: background-color .2s ease-in-out;
+    -webkit-transition: background-color .2s ease-in-out;
+    -moz-transition: background-color .2s ease-in-out;
+    -ms-transition: background-color .2s ease-in-out;
+    -o-transition: background-color .2s ease-in-out;
+}
+
+.background.active {
+    background-color: #b3b3b320;
+    z-index: 3;
+}
+
+
+section.red {
+    background-color: #6F1E51;
+}
+
+section.green {
+    background-color: #006266;
+}
+
+section.blue {
+    background-color: #192a56;
+}
+
+.red,
+.green,
+.blue {
+    padding: 100px;
+}
+
+.red img,
+.green img,
+.blue img {
+    width: 200px;
+}
+
+header[data-color='basic'] {
+    background-color: transparent;
+}
+
+header:not([data-color='basic']) .header-body,
+header:not([data-color='basic']) .header-request {
+    border-color: var(--light-gray);
+    color: var(--light-gray);
+}
+
+header:not([data-color='basic']) #logo {
+    fill: var(--light-gray)
+}
+
+header:not([data-color='basic']) .header-phones a {
+    color: var(--light-gray)
+}
+
+header:not([data-color='basic']) .header-hamburger path {
+    stroke: var(--light-gray)
+}
+
+/* color: var(--light-gray); */
+header:not([data-color='basic']) .header-request:hover {
+    background-color: transparent;
+    border-color: var(--beige);
+    color: var(--beige);
+}
+
+header[data-color='red'] {
+    background-color: var(--dark-gray);
+}
+
+header[data-color='green'] {
+    background-color: #006266;
+}
+
+header[data-color='blue'] {
+    background-color: #192a56;
+}
